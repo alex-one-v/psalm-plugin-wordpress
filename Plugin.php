@@ -493,6 +493,12 @@ class Plugin implements
 			return '{$variable}';
 		}
 
+		// Add handling for Ternary expressions
+		if ($arg instanceof PhpParser\Node\Expr\Ternary) {
+			// Decide on how to handle this case or return null to bypass
+			return null;
+		}
+
 		// other types not supported yet
 		// add handling if encountered @todo
 		throw new UnexpectedValueException( 'Unsupported dynamic hook name with type ' . get_class( $arg ) . ' on line ' . $arg->getStartLine(), 0 );
