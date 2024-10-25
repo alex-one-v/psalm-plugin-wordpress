@@ -1359,7 +1359,7 @@ class HookNodeVisitor extends PhpParser\NodeVisitorAbstract {
 
 		if ( $node instanceof Namespace_ ) {
 			// as soon as there is a new namespace, we need to empty the useStatements, as there will be new ones for the given namespace
-			$this->useNamespace = $node->name->toString();
+			$this->useNamespace = $node->name ? $node->name->toString() : '';
 			$this->useStatements = [];
 			$this->useStatementsNonClass = false;
 			return null;
